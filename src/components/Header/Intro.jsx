@@ -1,5 +1,4 @@
-import workingIllustration from '../assets/illustration-working.svg';
-
+import workingIllustration from '../../assets/illustration-working.svg';
 function Intro() {
   return (
     <>

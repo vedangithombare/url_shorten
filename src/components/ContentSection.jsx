@@ -2,8 +2,8 @@ import { useState } from "react";
 import UrlShorten from "./UrlShorten";
 
 import brandRecognition from '../assets/icon-brand-recognition.svg';
-import detailedRecords from '.../assets/icon-detailed-records.svg';
-import fullyCustomizable from '.../assets/icon-fully-customizable.svg';
+import detailedRecords from '../assets/icon-detailed-records.svg';
+import fullyCustomizable from '../assets/icon-fully-customizable.svg';
 
 function ContentSection() {
   

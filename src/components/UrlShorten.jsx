@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import bgShortenDesktop from './assets/bg-shorten-desktop.svg';
+import bgShortenDesktop from '../assets/bg-shorten-desktop.svg';
 
 function UrlShorten({ setCheckData }) {
   const postUrl = "http://localhost:3001/shorten";
