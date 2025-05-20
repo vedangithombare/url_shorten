@@ -1,3 +1,5 @@
+import workingIllustration from '../assets/illustration-working.svg';
+
 function Intro() {
   return (
     <>
@@ -23,7 +25,7 @@ function Intro() {
           </div>
           <div className="flex-2 display-flex justify-center">
             <img
-              src="./src/assets/illustration-working.svg"
+              src={workingIllustration}
               alt="working illustration"
             />
           </div>

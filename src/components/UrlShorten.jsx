@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
+import bgShortenDesktop from './assets/bg-shorten-desktop.svg';
 
 function UrlShorten({ setCheckData }) {
   const postUrl = "http://localhost:3001/shorten";
@@ -81,7 +82,7 @@ function UrlShorten({ setCheckData }) {
           <div className="relative flex">
             <img
               className="rounded-xl"
-              src="src/assets/bg-shorten-desktop.svg"
+              src={bgShortenDesktop}
               alt="background image"
             />
             <div className="absolute inset-0 bg-white-400 items-center justify-center  flex  flex-col ">

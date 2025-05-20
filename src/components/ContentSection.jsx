@@ -1,6 +1,10 @@
 import { useState } from "react";
 import UrlShorten from "./UrlShorten";
 
+import brandRecognition from '../assets/icon-brand-recognition.svg';
+import detailedRecords from '.../assets/icon-detailed-records.svg';
+import fullyCustomizable from '.../assets/icon-fully-customizable.svg';
+
 function ContentSection() {
   
   
@@ -28,7 +32,7 @@ function ContentSection() {
             <div className="w-14 h-14 rounded-full bg-[#3b3054] absolute -top-0 left-4">
               <img
                 className=" w-[30px] h-[30px] absolute top-3 left-[12px]"
-                src="src/assets/icon-brand-recognition.svg"
+                src={brandRecognition}
                 alt="brand-recognition"
               />
             </div>
@@ -47,7 +51,7 @@ function ContentSection() {
             <div className="w-14 h-14 rounded-full bg-[#3b3054] absolute -top-0 left-4">
               <img
                 className=" w-[30px] h-[30px] absolute top-3 left-[12px]"
-                src="src/assets/icon-detailed-records.svg"
+                src={detailedRecords}
                 alt="detailed-records"
               />
             </div>
@@ -66,7 +70,7 @@ function ContentSection() {
             <div className="w-14 h-14 rounded-full bg-[#3b3054]  absolute -top-0 left-4">
               <img
                 className=" w-[30px] h-[30px] absolute top-3 left-[12px]"
-                src="src/assets/icon-fully-customizable.svg"
+                src={fullyCustomizable}
                 alt="fully-customizable"
               />
             </div>

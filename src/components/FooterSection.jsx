@@ -1,3 +1,10 @@
+import facebookIcon from '../assets/icon-facebook.svg';
+import twitterIcon from '../assets/icon-twitter.svg';
+import pinterestIcon from '../assets/icon-pinterest.svg';
+import instagramIcon from '../assets/icon-instagram.svg';
+import bgBoostDesktop from '../assets/bg-boost-desktop.svg';
+
+
 function FooterSection() {
   return (
     <>
@@ -5,7 +12,7 @@ function FooterSection() {
         <div className=" relative flex bg-[#3e3165] ">
           <img
             className="h-66"
-            src="src/assets/bg-boost-desktop.svg"
+            src={bgBoostDesktop}
             alt="background-img"
           />
           <div className="absolute inset-0 flex items-center justify-center flex-col gap-6">
@@ -53,22 +60,22 @@ function FooterSection() {
           <div className="flex flex-row gap-6 ">
             <img
               className="w-6 h-6 cursor-pointer"
-              src="src/assets/icon-facebook.svg"
+              src={facebookIcon}
               alt="facebook icon"
             />
             <img
               className="w-6 h-6 cursor-pointer"
-              src="src/assets/icon-twitter.svg"
+              src={twitterIcon}
               alt="twitter icon"
             />
             <img
               className="w-6 h-6 cursor-pointer"
-              src="src/assets/icon-pinterest.svg"
+              src={pinterestIcon}
               alt="pinterest icon"
             />
             <img
               className="w-6 h-6 cursor-pointer"
-              src="src/assets/icon-instagram.svg"
+              src={instagramIcon}
               alt="instagram icon"
             />
           </div>
