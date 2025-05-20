@@ -1,14 +1,18 @@
+import { useState } from "react";
 import UrlShorten from "./UrlShorten";
 
 function ContentSection() {
-  // if data is present then padding-top : 430px
-  //if data is not present padding-top:250px
+  
+  
+  const [checkData,setCheckData] = useState(false);
 
   return (
     <>
-      <UrlShorten />
+      <UrlShorten setCheckData = {setCheckData} />
 
-      <div className="flex w-full pt-[430px] pb-[100px] flex-col bg-[#f2f2f2] p-20 justify-center items-center gap-10">
+      <div className={`flex w-full pb-[100px] flex-col bg-[#f2f2f2] p-20 justify-center items-center gap-10
+        ${checkData ? "pt-[430px]" : "pt-[250px]"}
+        `}>
         <div className="flex flex-col items-center gap-10">
           <span className="font-bold text-5xl"> Advanced Statistics</span>
           <span className="flex w-[462px] text-center  text-[#616a79]">

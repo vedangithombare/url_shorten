@@ -31,6 +31,21 @@ body{
 }
 #root{
     min-height:100vh;
+    min-width: 100vh;
     display:flex;
     flex-direction: column;
+}
+/* scrollbar-custom */
+
+.scrollbar-custom::-webkit-scrollbar{
+    width: 6px;
+}
+
+.scrollbar-custom::-webkit-scrollbar-track{
+    background-color: transparent;
+}
+
+.scrollbar-custom::-webkit-scrollbar-thumb{
+    background-color: #2c2c2e	;
+    border-radius: 12px;
 }
