@@ -4,7 +4,7 @@ import axios from "axios";
 function UrlShorten({ setCheckData }) {
   // https://url-shorten-backend-t5ep.onrender.com
 
-  const postUrl = "http://localhost:3001/shorten";
+  const postUrl = "https://url-shorten-backend-t5ep.onrender.com";
   const [getUrl, setUrl] = useState("");
   const [wrongUrl, setWrongUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);

@@ -28,8 +28,6 @@ function Intro() {
           />
         </div>
       </div>
-
-      {/* flex-2 display-flex justify-center */}
     </>
   );
 }
