@@ -21,8 +21,9 @@
 
 body{
     box-sizing: border-box;
-    height: 100%;
-    min-height:100vh;
+    width: 100dvw;
+    min-height:100dvh;
+    overflow-x: hidden;
     display:flex;
     margin: 0;
     flex-direction:column;
@@ -30,10 +31,10 @@ body{
     
 }
 #root{
-    min-height:100vh;
-    min-width: 100vh;
+    width: 100%;
     display:flex;
     flex-direction: column;
+    align-items: center;
 }
 /* scrollbar-custom */
 
@@ -48,4 +49,9 @@ body{
 .scrollbar-custom::-webkit-scrollbar-thumb{
     background-color: #2c2c2e	;
     border-radius: 12px;
+}
+
+@media (max-width:320px) {
+    
+    
 }

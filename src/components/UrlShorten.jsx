@@ -1,13 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
-import bgShortenDesktop from '../assets/bg-shorten-desktop.svg';
 
 function UrlShorten({ setCheckData }) {
+  // https://url-shorten-backend-t5ep.onrender.com
+
   const postUrl = "http://localhost:3001/shorten";
   const [getUrl, setUrl] = useState("");
   const [wrongUrl, setWrongUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [dataAvailable, setDataAvailable] = useState(false);
+  const [dataAvailable, setDataAvailable] = useState(true);
   const [copyText, setCopyText] = useState(null);
   const [urlPair, setUrlPair] = useState([]);
 
@@ -62,7 +63,6 @@ function UrlShorten({ setCheckData }) {
     }
   }, []);
 
-  // button onclick -> button text->copied! -> text-copied
   const copyToClipboard = async (textToCopy, index) => {
     try {
       await navigator.clipboard.writeText(textToCopy);
@@ -77,83 +77,101 @@ function UrlShorten({ setCheckData }) {
 
   return (
     <>
-      <div className=" absolute top-[98%]  flex flex-col gap-6">
-        <div className="bg-[#3e3165] rounded-xl">
-          <div className="relative flex">
-            <img
-              className="rounded-xl"
-              src={bgShortenDesktop}
-              alt="background image"
+      <div className=" flex flex-col w-full">
+        <div
+          className="flex flex-col gap-4 p-6 bg-[#3e3165] rounded-md relative -top-18 lg:-top-42 lg:flex-row lg:items-center lg:justify-between lg:p-10"
+          style={{
+            backgroundImage: `url("src/assets/bg-shorten-desktop.svg")`,
+            backgroundSize: "cover",
+            backgroundRepeat: "no-repeat",
+            backgroundPosition: "right",
+          }}
+        >
+          <div className="flex flex-col w-full lg:flex-1">
+            <input
+              className={`outline-none p-4 bg-white rounded-md text-sm lg:h-14 border-2 ${
+                wrongUrl || errorMsg ? "border-red-500" : "border-transparent"
+              }
+              
+              `}
+              onChange={(e) => {
+                setUrl(e.target.value);
+                setWrongUrl(false);
+                setErrorMsg(false);
+              }}
+              value={getUrl}
+              type="url"
+              id="urlId"
+              placeholder="Shorten a link here..."
             />
-            <div className="absolute inset-0 bg-white-400 items-center justify-center  flex  flex-col ">
-              <div className="flex gap-6 ">
-                <div className="flex flex-row bg-white p-2  w-[600px] rounded-xl ">
-                  <input
-                    className="outline-none  rounded-xl flex-1 pl-4 py-2 "
-                    onChange={(e) => {
-                      setUrl(e.target.value);
-                      setWrongUrl(false);
-                      setErrorMsg(false);
-                    }}
-                    value={getUrl}
-                    type="url"
-                    id="urlId"
-                    placeholder="Shorten the link here..."
-                  />
-                </div>
+            {/* wrongUrl && */}
+            {wrongUrl && (
+              <span className="text-red-500 text-sm mt-1 ml-1">
+                Please add a link
+              </span>
+            )}
 
-                <button
-                  onClick={validateUrl}
-                  className="flex p-3 px-6 bg-black text-white rounded-xl items-center justify-center font-semibold cursor-pointer hover:bg-gray-300 hover:text-black"
-                >
-                  Shorten it!
-                </button>
-              </div>
-
-              {wrongUrl && (
-                <div className="flex justify-start pr-[38rem]">
-                  <span className="text-red-500 text-md">
-                    oops!! invalid link
-                  </span>
-                </div>
-              )}
-
-              {errorMsg && (
-                <div className="flex justify-start pr-[28rem]">
-                  <span className="text-red-500 text-md">
-                    Please enter link starting with https://
-                  </span>
-                </div>
-              )}
-            </div>
+            {errorMsg && (
+              <span className="text-red-500 text-sm mt-1 ml-1">
+                Please enter link starting with https://
+              </span>
+            )}
           </div>
+
+          {/* Button */}
+          <button
+            onClick={validateUrl}
+            className={` p-4  rounded-md  text-sm bg-black text-white cursor-pointer font-bold hover:bg-white hover:text-black lg:w-32
+              ${wrongUrl || errorMsg ? "relative bottom-3" : ""}`}
+          >
+            Shorten It!
+          </button>
         </div>
 
-        {dataAvailable && (
-          <div className=" scrollbar-custom flex flex-col  h-[250px] gap-4 overflow-y-auto p-2">
-            {urlPair.map((item, index) => {
-              return (
-                <div
-                  key={index}
-                  className=" p-2  px-4 bg-white flex flex-row justify-between items-center rounded-md "
-                >
-                  <span className="text-l ">{item.original}</span>
+        {dataAvailable &&
+          urlPair.map((item, index) => {
+            <div key={index} className=" flex flex-col gap-4 p-2 ">
+              return(
+              <div className=" bg-white flex flex-col p-4 gap-2  rounded-md lg:flex-row lg:items-center lg:justify-between">
+                <span className="text-l p-2 border-b border-b-gray-400 text-start lg:border-none lg:w-auto truncate">
+                  {item.original}
+                </span>
 
-                  <div className="flex gap-8 items-center">
-                    <span className="text-[#8e7cc2]">{item.shortenUrl}</span>
+                <div className="flex  flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+                  <span className="text-[#8e7cc2]  p-2">{item.original}</span>
 
-                    <button
-                      onClick={() => copyToClipboard(item.shortenUrl, index)}
-                      className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md"
-                    >
-                      {copyText ===index ? "Copied!!" : "Copy"}
-                    </button>
-                  </div>
+                  <button
+                    onClick={() => copyToClipboard(item.shortenUrl, index)}
+                    className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md lg:self-auto"
+                  >
+                    Copy
+                    {copyText === index ? "Copied!!" : "Copy"}
+                  </button>
                 </div>
-              );
-            })}
+              </div>
+              )
+            </div>;
+          })}
+
+        {/* <div className=" flex flex-col gap-4 p-2 ">
+          <div className=" bg-white flex flex-col p-4 gap-2  rounded-md lg:flex-row lg:items-center lg:justify-between">
+            <span className="text-l p-2 border-b border-b-gray-400 text-start lg:border-none lg:w-auto truncate">
+              original link
+            </span>
+
+            <div className="flex  flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+              <span className="text-[#8e7cc2]  p-2">shorten link</span>
+
+              <button
+                onClick={() => copyToClipboard(item.shortenUrl, index)}
+                className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md lg:self-auto"
+              >
+                Copy
+                {copyText === index ? "Copied!!" : "Copy"}
+              </button>
+            </div>
           </div>
-        )}
+        </div> */}
       </div>
     </>
   );
