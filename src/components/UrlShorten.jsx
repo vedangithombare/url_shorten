@@ -3,12 +3,12 @@ import axios from "axios";
 
 function UrlShorten() {
   // https://url-shorten-backend-t5ep.onrender.com
+// http://localhost:5000/shorten
 
-  const postUrl = "https://url-shorten-backend-t5ep.onrender.com";
+  const postUrl = "https://url-shorten-backend-t5ep.onrender.com/shorten";
   const [getUrl, setUrl] = useState("");
   const [wrongUrl, setWrongUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [dataAvailable, setDataAvailable] = useState(false);
   const [copyText, setCopyText] = useState(null);
   const [urlPair, setUrlPair] = useState([]);
 
@@ -58,7 +58,6 @@ function UrlShorten() {
     const stored = sessionStorage.getItem("data");
     if (stored) {
       setUrlPair(JSON.parse(stored));
-      setDataAvailable(true);
     }
   }, []);
 
@@ -128,7 +127,7 @@ function UrlShorten() {
         </div>
 
         <div className="flex flex-col md:relative md:-top-14">
-          {dataAvailable &&
+          {urlPair.length > 0 &&
             urlPair.map((item, index) => (
               <div key={index} className="flex flex-col gap-4 p-2">
                 <div className="bg-white flex flex-col p-4 gap-2 rounded-md lg:flex-row lg:items-center lg:justify-between">
