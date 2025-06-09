@@ -1,7 +1,8 @@
-import facebookIcon from "../assets/icon-facebook.svg";
-import twitterIcon from "../assets/icon-twitter.svg";
-import pinterestIcon from "../assets/icon-pinterest.svg";
-import instagramIcon from "../assets/icon-instagram.svg";
+// import facebookIcon from "../assets/icon-facebook.svg";
+// import twitterIcon from "../assets/icon-twitter.svg";
+// import pinterestIcon from "../assets/icon-pinterest.svg";
+// import instagramIcon from "../assets/icon-instagram.svg";
+// import bgBoostDesktop from "../assets/bg-boost-desktop.svg";
 
 function FooterSection() {
   return (
@@ -10,7 +11,7 @@ function FooterSection() {
         <div
           className={` bg-[#3e3165] flex items-center justify-center h-64 `}
           style={{
-            backgroundImage: `url(${"src/assets/bg-boost-desktop.svg"})`,
+            backgroundImage: `url("/assets/bg-boost-desktop.svg")`,
             backgroundSize: "cover",
             backgroundPosition: "center",
             backgroundRepeat: "no-repeat",
@@ -82,22 +83,22 @@ function FooterSection() {
           <div className=" flex flex-row justify-center  gap-4 lg:flex-row lg:h-6">
             <img
               className=" cursor-pointer"
-              src={facebookIcon}
+              src="/assets/icon-facebook.svg"
               alt="facebook icon"
             />
             <img
               className="cursor-pointer"
-              src={twitterIcon}
-              alt="twitter icon"
+              src="/assets/icon-twitter.svg"
+              alt="x icon"
             />
             <img
               className=" cursor-pointer"
-              src={pinterestIcon}
+              src="/assets/icon-pinterest.svg"
               alt="pinterest icon"
             />
             <img
               className=" cursor-pointer"
-              src={instagramIcon}
+              src="/assets/icon-instagram.svg"
               alt="instagram icon"
             />
           </div>

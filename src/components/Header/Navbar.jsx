@@ -12,7 +12,7 @@ function Navbar() {
       <div className="flex flex-row justify-between  p-6 w-full items-center xl:max-w-screen-lg">
         <span className="font-bold text-4xl">Shortly</span>
         <button className=" cursor-pointer lg:hidden" onClick={toggleMenu}>
-          Menu
+          <span className="material-symbols-outlined">menu</span>
         </button>
 
         <div

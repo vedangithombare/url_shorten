@@ -1,14 +1,14 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 
-function UrlShorten({ setCheckData }) {
+function UrlShorten() {
   // https://url-shorten-backend-t5ep.onrender.com
 
   const postUrl = "https://url-shorten-backend-t5ep.onrender.com";
   const [getUrl, setUrl] = useState("");
   const [wrongUrl, setWrongUrl] = useState(false);
   const [errorMsg, setErrorMsg] = useState(false);
-  const [dataAvailable, setDataAvailable] = useState(true);
+  const [dataAvailable, setDataAvailable] = useState(false);
   const [copyText, setCopyText] = useState(null);
   const [urlPair, setUrlPair] = useState([]);
 
@@ -59,7 +59,6 @@ function UrlShorten({ setCheckData }) {
     if (stored) {
       setUrlPair(JSON.parse(stored));
       setDataAvailable(true);
-      setCheckData(true);
     }
   }, []);
 
@@ -81,7 +80,7 @@ function UrlShorten({ setCheckData }) {
         <div
           className="flex flex-col gap-4 p-6 bg-[#3e3165] rounded-md relative -top-18 lg:-top-42 lg:flex-row lg:items-center lg:justify-between lg:p-10"
           style={{
-            backgroundImage: `url("src/assets/bg-shorten-desktop.svg")`,
+            backgroundImage: `url("/assets/bg-shorten-desktop.svg")`,
             backgroundSize: "cover",
             backgroundRepeat: "no-repeat",
             backgroundPosition: "right",
@@ -104,7 +103,7 @@ function UrlShorten({ setCheckData }) {
               id="urlId"
               placeholder="Shorten a link here..."
             />
-            {/* wrongUrl && */}
+
             {wrongUrl && (
               <span className="text-red-500 text-sm mt-1 ml-1">
                 Please add a link
@@ -128,50 +127,31 @@ function UrlShorten({ setCheckData }) {
           </button>
         </div>
 
-        {dataAvailable &&
-          urlPair.map((item, index) => {
-            <div key={index} className=" flex flex-col gap-4 p-2 ">
-              return(
-              <div className=" bg-white flex flex-col p-4 gap-2  rounded-md lg:flex-row lg:items-center lg:justify-between">
-                <span className="text-l p-2 border-b border-b-gray-400 text-start lg:border-none lg:w-auto truncate">
-                  {item.original}
-                </span>
+        <div className="flex flex-col md:relative md:-top-14">
+          {dataAvailable &&
+            urlPair.map((item, index) => (
+              <div key={index} className="flex flex-col gap-4 p-2">
+                <div className="bg-white flex flex-col p-4 gap-2 rounded-md lg:flex-row lg:items-center lg:justify-between">
+                  <span className="text-l p-2 border-b border-b-gray-400 text-start lg:border-none lg:w-auto truncate">
+                    {item.original}
+                  </span>
 
-                <div className="flex  flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-                  <span className="text-[#8e7cc2]  p-2">{item.original}</span>
+                  <div className="flex flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
+                    <span className="text-[#8e7cc2] p-2">
+                      {item.shortenUrl}
+                    </span>
 
-                  <button
-                    onClick={() => copyToClipboard(item.shortenUrl, index)}
-                    className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md lg:self-auto"
-                  >
-                    Copy
-                    {copyText === index ? "Copied!!" : "Copy"}
-                  </button>
+                    <button
+                      onClick={() => copyToClipboard(item.shortenUrl, index)}
+                      className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md lg:self-auto"
+                    >
+                      {copyText === index ? "Copied!" : "Copy"}
+                    </button>
+                  </div>
                 </div>
               </div>
-              )
-            </div>;
-          })}
-
-        {/* <div className=" flex flex-col gap-4 p-2 ">
-          <div className=" bg-white flex flex-col p-4 gap-2  rounded-md lg:flex-row lg:items-center lg:justify-between">
-            <span className="text-l p-2 border-b border-b-gray-400 text-start lg:border-none lg:w-auto truncate">
-              original link
-            </span>
-
-            <div className="flex  flex-col gap-2 lg:flex-row lg:items-center lg:gap-4">
-              <span className="text-[#8e7cc2]  p-2">shorten link</span>
-
-              <button
-                onClick={() => copyToClipboard(item.shortenUrl, index)}
-                className="p-2 px-8 bg-[#232127] cursor-pointer text-white font-semibold rounded-md lg:self-auto"
-              >
-                Copy
-                {copyText === index ? "Copied!!" : "Copy"}
-              </button>
-            </div>
-          </div>
-        </div> */}
+            ))}
+        </div>
       </div>
     </>
   );

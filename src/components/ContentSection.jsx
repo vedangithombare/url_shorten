@@ -1,8 +1,8 @@
 import UrlShorten from "./UrlShorten";
 
-import brandRecognition from "../assets/icon-brand-recognition.svg";
-import detailedRecords from "../assets/icon-detailed-records.svg";
-import fullyCustomizable from "../assets/icon-fully-customizable.svg";
+// import brandRecognition from "../assets/icon-brand-recognition.svg";
+// import detailedRecords from "../assets/icon-detailed-records.svg";
+// import fullyCustomizable from "../assets/icon-fully-customizable.svg";
 
 function ContentSection() {
   return (
@@ -27,7 +27,7 @@ function ContentSection() {
               <div className="h-18 w-18 p-4 rounded-[50%] relative -top-10 flex items-center justify-center bg-[#3b3054]">
                 <img
                   className="w-full h-full object-contains"
-                  src={brandRecognition}
+                  src="/assets/icon-brand-recognition.svg"
                   alt="brand recognition"
                 />
               </div>
@@ -47,7 +47,7 @@ function ContentSection() {
               <div className="h-18 w-18 p-4 rounded-[50%] relative -top-10 flex items-center justify-center bg-[#3b3054]">
                 <img
                   className=" "
-                  src={detailedRecords}
+                  src="/assets/icon-detailed-records.svg"
                   alt="detailed-records"
                 />
               </div>
@@ -67,7 +67,7 @@ function ContentSection() {
               <div className="h-18 w-18 p-4 rounded-[50%] relative -top-10 flex items-center justify-center bg-[#3b3054]">
                 <img
                   className=" "
-                  src={fullyCustomizable}
+                  src="/assets/icon-fully-customizable.svg"
                   alt="fully-customizable"
                 />
               </div>

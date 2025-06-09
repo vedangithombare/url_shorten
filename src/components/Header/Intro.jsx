@@ -1,9 +1,8 @@
-import workingIllustration from "../../assets/illustration-working.svg";
+// import workingIllustration from "../../assets/illustration-working.svg";
 function Intro() {
   return (
     <>
-      <div className=" flex flex-col-reverse gap-6 items-center  justify-between lg:flex-row lg:h-110 xl:max-w-screen-lg p-6 mx-auto">
-
+      <div className=" flex flex-col-reverse gap-6 items-center  justify-between lg:w-full lg:flex-row lg:h-110 xl:max-w-screen-lg p-6 ">
         <div className=" flex flex-col text-center gap-4  items-center lg:items-start lg:text-left lg:gap-4">
           <span className="font-bold text-4xl lg:text-6xl ">
             More than just shorter links
@@ -20,10 +19,10 @@ function Intro() {
 
         {/* Image div */}
 
-        <div className=" w-full lg:w-1/2">
+        <div className=" w-full lg:w-5/6 flex items-center justify-center">
           <img
             className="object-cover w-full"
-            src={workingIllustration}
+            src="/assets/illustration-working.svg"
             alt="working illustration"
           />
         </div>
